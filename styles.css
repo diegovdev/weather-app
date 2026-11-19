@@ -3112,3 +3112,39 @@ html[data-look="retro"] .look-toggle[aria-pressed="true"] {
   color: hsl(44, 85%, 90%);
   border-color: hsl(40, 85%, 50%);
 }
+
+/* Retro look: override hardcoded cool backgrounds on the app shell and cards */
+html[data-look="retro"] .app,
+html[data-look="retro"] .app.weather-clear,
+html[data-look="retro"] .app.weather-cloudy,
+html[data-look="retro"] .app.weather-rainy,
+html[data-look="retro"] .app.weather-snowy,
+html[data-look="retro"] .app.weather-stormy {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 55%, hsl(40, 85%, 38%) 100%);
+}
+
+html[data-look="retro"] .current-weather {
+  background: linear-gradient(135deg, hsl(24, 85%, 48%) 0%, hsl(40, 85%, 50%) 100%);
+  color: hsl(22, 55%, 12%);
+  border: 3px solid hsl(25, 60%, 12%);
+}
+
+html[data-look="retro"] .metric-card,
+html[data-look="retro"] .forecast-day,
+html[data-look="retro"] .forecast-hour {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+html[data-look="retro"] .hourly-forecast {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+/* Keep the extra header button from pushing the units button out of view */
+@media (max-width: 720px) {
+  .header { flex-wrap: wrap; }
+  .header-controls { flex-wrap: wrap; justify-content: flex-end; flex-shrink: 1; }
+}
