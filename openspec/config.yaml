@@ -1,0 +1,43 @@
+schema: spec-driven
+
+context: |
+  weather-app is the scratch repository for proving the spine-os delivery
+  cycle (stage 0). It is a fork of Ayokanmi-Adejola/Weather-App: a static
+  weather page in vanilla HTML, CSS and JavaScript (index.html, styles.css,
+  script.js) that calls the Open-Meteo API from the browser. No build step and
+  no dependencies. Checks are `npm run check` (syntax) and `npm test` (Node's
+  built-in test runner, tests under test/), run in CI on every pull request.
+  Pull requests target diegovdev/weather-app, never the upstream repository.
+  One ticket = one branch = one pull request; commits use Conventional
+  Commits. Diego merges every pull request.
+
+# Project context (optional)
+# Add only constraints that should guide OpenSpec artifacts and workflows.
+# Include constraints an agent cannot infer by reading the code.
+# Keep general project documentation and discoverable codebase facts out.
+# Example:
+#   context: |
+#     Designs and tasks must cover Windows, macOS, and Linux
+#     Write all artifacts in Spanish
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always state what is out of scope
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing
