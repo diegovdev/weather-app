@@ -1,0 +1,9 @@
+{
+  "name": "weather-app",
+  "private": true,
+  "description": "Scratch app for the spine-os delivery cycle. No dependencies: checks and tests use Node built-ins.",
+  "scripts": {
+    "check": "node --check script.js",
+    "test": "node --test"
+  }
+}
