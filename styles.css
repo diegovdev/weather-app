@@ -3094,7 +3094,13 @@ p {
 
 /* Light soccer: cards hard-code a dark background elsewhere, so give them a light surface */
 [data-skin="soccer"][data-theme="light"] .metric-card,
-[data-skin="soccer"][data-theme="light"] .forecast-day {
+[data-skin="soccer"][data-theme="light"] .forecast-day,
+[data-skin="soccer"][data-theme="light"] .hourly-forecast,
+[data-skin="soccer"][data-theme="light"] .forecast-hour {
   background-color: hsl(120, 35%, 94%);
   color: var(--text-primary);
+}
+
+[data-skin="soccer"][data-theme="light"] .forecast-hour {
+  background-color: hsl(120, 30%, 88%);
 }

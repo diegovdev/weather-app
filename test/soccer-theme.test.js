@@ -444,12 +444,16 @@ test('light-dark-interaction', () => {
     const daySelector = resolveSurfaceStyles(css, attrs, { tag: 'select', classes: ['day-selector'] });
     const metricCard = resolveSurfaceStyles(css, attrs, { tag: 'div', classes: ['metric-card'] }, { tag: 'div', classes: ['metric-value'] });
     const forecastCard = resolveSurfaceStyles(css, attrs, { tag: 'div', classes: ['forecast-day'] }, { tag: 'div', classes: ['day-name'] });
+    const hourlyTitle = resolveSurfaceStyles(css, attrs, { tag: 'section', classes: ['hourly-forecast', 'card'] }, { tag: 'h2', classes: ['section-title'] });
+    const hourRow = resolveSurfaceStyles(css, attrs, { tag: 'div', classes: ['forecast-hour'] }, { tag: 'div', classes: ['hour-time'] });
 
     for (const [label, surface] of [
       ['.favorites-button', favoritesBtn],
       ['.day-selector', daySelector],
       ['.metric-card', metricCard],
-      ['.forecast-day', forecastCard]
+      ['.forecast-day', forecastCard],
+      ['.hourly-forecast .section-title', hourlyTitle],
+      ['.forecast-hour .hour-time', hourRow]
     ]) {
       const ratio = contrastRatio(surface.color, surface.bg);
       assert.ok(
