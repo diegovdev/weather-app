@@ -1018,6 +1018,26 @@ test('Retro 1970s look styles the whole page with warm earthy palette, rounded c
         [htmlNode, bodyNode, appRainy, { tag: 'section', classes: ['current-weather', 'card'] }]
       ],
       [
+        'hero card date (.current-weather .current-date)',
+        [
+          htmlNode,
+          bodyNode,
+          appRainy,
+          { tag: 'section', classes: ['current-weather', 'card'] },
+          { tag: 'div', classes: ['current-date'] }
+        ]
+      ],
+      [
+        'hero card description (.current-weather .current-description)',
+        [
+          htmlNode,
+          bodyNode,
+          appRainy,
+          { tag: 'section', classes: ['current-weather', 'card'] },
+          { tag: 'div', classes: ['current-description'] }
+        ]
+      ],
+      [
         'metric card (.metric-card)',
         [htmlNode, bodyNode, appRainy, { tag: 'div', classes: ['metric-card', 'card'] }]
       ],
@@ -1124,6 +1144,17 @@ test('Existing layout and units toggle work in both looks', async () => {
   ]);
   assert.equal(retroWeatherGrid.raw.get('display'), defaultWeatherGrid.raw.get('display'));
   assert.equal(retroWeatherGrid.raw.get('grid-template-columns'), defaultWeatherGrid.raw.get('grid-template-columns'));
+
+  const mobileHeaderControls = resolveSurface(
+    [
+      { tag: 'html', attrs: { 'data-look': 'retro', 'data-theme': 'dark' } },
+      { tag: 'body' },
+      { tag: 'header', classes: ['header'] },
+      { tag: 'div', classes: ['header-controls'] }
+    ],
+    390
+  );
+  assert.equal(mobileHeaderControls.raw.get('flex-wrap'), 'wrap', 'header controls must wrap on narrow screens so units stays reachable');
 
   const unitsButton = document.getElementById('unitsButton');
   const unitsMenu = document.getElementById('unitsMenu');
