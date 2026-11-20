@@ -3148,3 +3148,11 @@ html[data-look="retro"] .hourly-forecast {
   .header { flex-wrap: wrap; }
   .header-controls { flex-wrap: wrap; justify-content: flex-end; flex-shrink: 1; }
 }
+
+/* Retro look: readable text on the orange/mustard current-weather card */
+html[data-look="retro"] .current-weather .current-location,
+html[data-look="retro"] .current-weather .current-date,
+html[data-look="retro"] .current-weather .current-description,
+html[data-look="retro"] .current-weather .current-temp {
+  color: hsl(22, 60%, 9%);
+}
