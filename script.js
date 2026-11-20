@@ -274,10 +274,8 @@ const soccer = {
     try { localStorage.setItem(this.KEY, String(on)); } catch (e) { /* ignore */ }
     const btn = document.getElementById('soccerToggle');
     if (btn) {
-      const label = on ? 'Switch to default theme' : 'Switch to soccer theme';
       btn.setAttribute('aria-pressed', String(on));
-      btn.setAttribute('aria-label', label);
-      btn.setAttribute('title', label);
+      btn.setAttribute('title', on ? 'Turn off soccer theme' : 'Turn on soccer theme');
     }
   }
 };
