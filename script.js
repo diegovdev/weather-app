@@ -247,6 +247,39 @@ const api = {
   }
 };
 
+// Look Management (default vs retro 70s), independent from light/dark theme
+const look = {
+  KEY: 'weatherAppLook',
+
+  init() {
+    let saved = null;
+    try { saved = localStorage.getItem(this.KEY); } catch (e) { /* storage unavailable */ }
+    this.apply(saved === 'retro' ? 'retro' : 'default');
+
+    const btn = document.getElementById('lookToggle');
+    if (btn) {
+      // A <button> already activates on Enter/Space; click covers keyboard too.
+      btn.addEventListener('click', () => {
+        this.apply(document.documentElement.getAttribute('data-look') === 'retro' ? 'default' : 'retro', true);
+      });
+    }
+  },
+
+  apply(name, persist = false) {
+    const root = document.documentElement;
+    if (name === 'retro') {
+      root.setAttribute('data-look', 'retro');
+    } else {
+      root.removeAttribute('data-look');
+    }
+    const btn = document.getElementById('lookToggle');
+    if (btn) btn.setAttribute('aria-pressed', String(name === 'retro'));
+    if (persist) {
+      try { localStorage.setItem(this.KEY, name); } catch (e) { /* storage unavailable */ }
+    }
+  }
+};
+
 // Theme Management
 const theme = {
   init() {
@@ -1341,6 +1374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM elements initialized');
 
   // Initialize components
+  look.init();
   theme.init();
   console.log('Theme initialized');
 

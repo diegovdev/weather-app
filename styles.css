@@ -2,6 +2,7 @@
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,500;0,600;1,600;0,700&family=Bricolage+Grotesque:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
 /* CSS Custom Properties (Design System) */
 :root {
@@ -3012,4 +3013,146 @@ p {
   .card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
+}
+
+
+/* ==========================================================================
+   Retro 1970s look: html[data-look="retro"]
+   Overrides tokens for both light and dark themes; layout is untouched.
+   ========================================================================== */
+
+.look-toggle {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.look-toggle:hover { filter: brightness(1.1); }
+
+.look-toggle:focus-visible {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+.look-toggle[aria-pressed="true"] {
+  background: hsl(28, 85%, 48%);
+  color: hsl(40, 90%, 94%);
+  border-color: hsl(25, 50%, 22%);
+}
+
+html[data-look="retro"],
+html[data-look="retro"][data-theme="light"],
+html[data-look="retro"][data-theme="dark"] {
+  --font-primary: 'Trebuchet MS', 'Gill Sans', 'Segoe UI', sans-serif;
+  --font-display: 'Shrikhand', 'Cooper Black', 'Georgia', serif;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --orange-500: hsl(24, 85%, 48%);   /* burnt orange */
+  --blue-500: hsl(80, 35%, 32%);     /* avocado green */
+  --blue-700: hsl(80, 40%, 24%);
+  --neutral-0: hsl(42, 80%, 92%);
+  --neutral-200: hsl(38, 45%, 72%);
+  --neutral-300: hsl(35, 35%, 55%);
+  --neutral-600: hsl(25, 40%, 30%);
+  --neutral-700: hsl(25, 45%, 22%);
+  --neutral-800: hsl(25, 45%, 16%);
+  --neutral-900: hsl(22, 50%, 10%);
+  --bg-primary: hsl(25, 45%, 14%);       /* brown */
+  --bg-secondary: hsl(28, 40%, 20%);
+  --bg-tertiary: hsl(32, 40%, 27%);
+  --text-primary: hsl(44, 85%, 88%);     /* cream */
+  --text-secondary: hsl(42, 70%, 78%);
+  --text-tertiary: hsl(40, 55%, 68%);
+  --border-color: hsl(40, 85%, 50%);     /* mustard */
+  --shadow-color: rgba(60, 25, 5, 0.55);
+  --shadow-sm: 3px 3px 0 hsl(25, 60%, 8%);
+  --shadow-md: 5px 5px 0 hsl(25, 60%, 8%);
+  --shadow-lg: 7px 7px 0 hsl(25, 60%, 8%);
+}
+
+html[data-look="retro"][data-theme="light"] {
+  --bg-primary: hsl(43, 75%, 88%);
+  --bg-secondary: hsl(40, 80%, 80%);
+  --bg-tertiary: hsl(38, 75%, 72%);
+  --text-primary: hsl(22, 55%, 16%);
+  --text-secondary: hsl(22, 45%, 24%);
+  --text-tertiary: hsl(22, 40%, 30%);
+  --border-color: hsl(24, 70%, 40%);
+  --shadow-color: rgba(90, 40, 10, 0.3);
+}
+
+html[data-look="retro"] body {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 55%, hsl(40, 85%, 38%) 100%);
+}
+
+html[data-look="retro"] h1,
+html[data-look="retro"] h2,
+html[data-look="retro"] h3,
+html[data-look="retro"] .logo {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+html[data-look="retro"] button,
+html[data-look="retro"] input,
+html[data-look="retro"] select {
+  border-radius: 999px;
+}
+
+html[data-look="retro"] .look-toggle[aria-pressed="true"] {
+  background: hsl(80, 35%, 32%);
+  color: hsl(44, 85%, 90%);
+  border-color: hsl(40, 85%, 50%);
+}
+
+/* Retro look: override hardcoded cool backgrounds on the app shell and cards */
+html[data-look="retro"] .app,
+html[data-look="retro"] .app.weather-clear,
+html[data-look="retro"] .app.weather-cloudy,
+html[data-look="retro"] .app.weather-rainy,
+html[data-look="retro"] .app.weather-snowy,
+html[data-look="retro"] .app.weather-stormy {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 55%, hsl(40, 85%, 38%) 100%);
+}
+
+html[data-look="retro"] .current-weather {
+  background: linear-gradient(135deg, hsl(24, 85%, 48%) 0%, hsl(40, 85%, 50%) 100%);
+  color: hsl(22, 55%, 12%);
+  border: 3px solid hsl(25, 60%, 12%);
+}
+
+html[data-look="retro"] .metric-card,
+html[data-look="retro"] .forecast-day,
+html[data-look="retro"] .forecast-hour {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+html[data-look="retro"] .hourly-forecast {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+/* Keep the extra header button from pushing the units button out of view */
+@media (max-width: 720px) {
+  .header { flex-wrap: wrap; }
+  .header-controls { flex-wrap: wrap; justify-content: flex-end; flex-shrink: 1; }
+}
+
+/* Retro look: readable text on the orange/mustard current-weather card */
+html[data-look="retro"] .current-weather .current-location,
+html[data-look="retro"] .current-weather .current-date,
+html[data-look="retro"] .current-weather .current-description,
+html[data-look="retro"] .current-weather .current-temp {
+  color: hsl(22, 60%, 9%);
 }

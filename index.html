@@ -13,6 +13,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="styles.css">
 
+  <script>
+    try { if (localStorage.getItem('weatherAppLook') === 'retro') document.documentElement.setAttribute('data-look', 'retro'); } catch (e) {}
+  </script>
+
   <title>Weather Now</title>
 </head>
 <body>
@@ -31,6 +35,11 @@
           <!-- Theme Toggle -->
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
             <img src="./assets/images/icon-sunny.webp" alt="" class="theme-icon" id="themeIcon">
+          </button>
+
+          <!-- Look Toggle (default / retro 70s) -->
+          <button class="look-toggle" id="lookToggle" type="button" aria-pressed="false" aria-label="Retro 70s look">
+            <span class="look-toggle-label">70s</span>
           </button>
 
           <!-- Favorites Dropdown -->
