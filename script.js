@@ -247,6 +247,41 @@ const api = {
   }
 };
 
+// Soccer Theme (skin layered on top of light/dark)
+const soccer = {
+  KEY: 'weatherAppSoccer',
+
+  init() {
+    let on = false;
+    try { on = localStorage.getItem(this.KEY) === 'true'; } catch (e) { /* storage unavailable */ }
+    this.set(on);
+    const btn = document.getElementById('soccerToggle');
+    if (btn) {
+      btn.addEventListener('click', () => this.set(!this.isOn()));
+    }
+  },
+
+  isOn() {
+    return document.documentElement.getAttribute('data-skin') === 'soccer';
+  },
+
+  set(on) {
+    if (on) {
+      document.documentElement.setAttribute('data-skin', 'soccer');
+    } else {
+      document.documentElement.removeAttribute('data-skin');
+    }
+    try { localStorage.setItem(this.KEY, String(on)); } catch (e) { /* ignore */ }
+    const btn = document.getElementById('soccerToggle');
+    if (btn) {
+      const label = on ? 'Switch to default theme' : 'Switch to soccer theme';
+      btn.setAttribute('aria-pressed', String(on));
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    }
+  }
+};
+
 // Theme Management
 const theme = {
   init() {
@@ -1343,6 +1378,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize components
   theme.init();
   console.log('Theme initialized');
+
+  soccer.init();
 
   search.init();
   console.log('Search initialized');
